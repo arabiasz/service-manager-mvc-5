@@ -1,0 +1,563 @@
+﻿@model Inspinia_MVC5_SeedProject.Models.ReadingOfFiscalMemory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Details</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("List", "Index")
+            </li>
+            <li class="active">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Details ReadingOfFiscalMemory</h5>
+                </div>
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ModuleId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModuleId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerNIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerNIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstallationAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstallationAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UniqueNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UniqueNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfFiscalization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfFiscalization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReadingReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReadingReason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReadingType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReadingType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FromReport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromReport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToReport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToReport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FromReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_A_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_A_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_B_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_B_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_C_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_C_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_D_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_D_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_E_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_E_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_F_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_F_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_G_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_G_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_A_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_A_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_B_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_B_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_C_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_C_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_D_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_D_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_E_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_E_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_F_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_F_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_A_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_A_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_B_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_B_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_C_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_C_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_D_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_D_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_E_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_E_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_F_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_F_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_A_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_A_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_B_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_B_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_C_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_C_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_D_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_D_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_E_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_E_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_F_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_F_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PTU_G_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PTU_G_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_A_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_A_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_B_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_B_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_C_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_C_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_D_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_D_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_E_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_E_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAT_F_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAT_F_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_A_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_A_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_B_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_B_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_C_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_C_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_D_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_D_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_E_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_E_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PTU_F_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PTU_F_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmountPTU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmountPTU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemoryResetCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemoryResetCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfFiscalRecipt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfFiscalRecipt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfReciptCanceled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfReciptCanceled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueOfCanceledRecipt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValueOfCanceledRecipt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Addnotations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Addnotations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatesOfInterimReviews)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatesOfInterimReviews)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfCompletion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfCompletion)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Edit", "Edit", new { id = Model.ReadingOfFiscalMemoryId }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

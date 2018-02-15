@@ -1,0 +1,799 @@
+﻿@model Inspinia_MVC5_SeedProject.Models.ReadingOfFiscalMemory
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/plugins/dateTimePickerStyles")
+@Styles.Render("~/plugins/maskStyles")
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Odczyt pamięci fiskalnej</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Strona główna", "Index")
+            </li>
+            <li class="active">
+                <strong>Utwórz</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+			@Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary"})
+        </div>
+    </div>
+</div>
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Uzupełnij formularz</h5>
+                </div>
+                <div class="ibox-content">
+
+				    @using (Html.BeginForm()) 
+                    {
+                        @Html.AntiForgeryToken()
+            
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(m => m.ModuleId)
+                            <div class="col-lg-7">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Dane podatnika</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content" style="">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.CustomerName, new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.CustomerNIP, new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.CustomerNIP, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.CustomerNIP, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.CustomerAddress, new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.CustomerAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.CustomerAddress, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Dane urządzenia</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content" style="">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.UniqueNumber, new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.UniqueNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.UniqueNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SerialNumber, new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.RegistrationNumber, new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.RegistrationNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.DateOfFiscalization, new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @*@Html.EditorFor(model => model.DateOfFiscalization, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                @Html.TextBoxFor(m => m.DateOfFiscalization, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.DateOfFiscalization, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InstallationAddress, new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.InstallationAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.InstallationAddress, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Raport info</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content" style="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.ReadingReason, new { @class = "control-label col-md-2" })
+                                                        <div class="col-md-10">
+                                                            @Html.DropDownList("ReadingReason", new List<SelectListItem>
+                                                            {
+                                                            new SelectListItem{ Text="Likwidacja działalności gospodarczej" },
+                                                            new SelectListItem{ Text="Likwidacja (wycofanie z użytkowania) kasy" },
+                                                            new SelectListItem{ Text="Wymiana modułu pamięci fiskalnej" }
+                                                            }, "Wybierz", htmlAttributes: new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.ReadingReason, "", new { @class = "text-danger" })
+                                                         </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.ReadingType, new { @class = "control-label col-md-2" })
+                                                        <div class="col-md-10">
+                                                            @Html.DropDownList("ReadingType", new List<SelectListItem>
+                                                            {
+                                                            new SelectListItem{ Text="Rozliczeniowy (powodujący blokowanie działania kasy)", Value = "0" },
+                                                            new SelectListItem{ Text="Okresowy", Value = "1" }
+                                                            }, "Wybierz", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.ReadingType, "", new { @class = "text-danger" })                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.FromReport, new { @class = "control-label col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.FromReport, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.FromReport, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.ToReport, new { @class = "control-label col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @Html.EditorFor(model => model.ToReport, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.ToReport, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.FromReportDate, new { @class = "control-label col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @*@Html.EditorFor(model => model.FromReportDate, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                                    @Html.TextBoxFor(m => m.FromReportDate, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.FromReportDate, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(model => model.ToReportDate, new { @class = "control-label col-md-4" })
+                                                                <div class="col-md-8">
+                                                                    @*@Html.EditorFor(model => model.ToReportDate, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                                    @Html.TextBoxFor(m => m.ToReportDate, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.ToReportDate, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <h5>Stawki VAT przed 2011</h5>
+                                                <div class="ibox-tools">
+                                                    <a class="collapse-link">
+                                                        <i class="fa fa-chevron-up"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="ibox-content" style="">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_A_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU A", @data_mask = "9 999 999" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_A_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_A_old", new SelectList(ViewBag.VatOld, "Value", "Text"), "PTU A", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_A_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_A_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU A" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_A_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_B_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU B" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_B_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_B_old", new SelectList(ViewBag.VatOld, "Value", "Text"), "PTU B", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_B_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_B_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU B" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_B_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_C_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU C" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_C_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_C_old", new SelectList(ViewBag.VatOld, "Value", "Text"), "PTU C", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_C_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_C_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU C" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_C_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_D_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU D" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_D_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_D_old", new SelectList(ViewBag.VatOld, "Value", "Text"), "PTU D", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_D_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_D_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU D" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_D_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_E_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU E" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_E_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_E_old", new SelectList(ViewBag.VatOld, "Value", "Text"), "PTU E", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_E_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_E_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU E" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_E_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_F_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU F" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_F_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_F_old", new SelectList(ViewBag.VatOld, "Value", "Text"), "PTU F", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_F_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_F_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU F" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_F_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_G_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU G" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_G_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_G_old", new SelectList(ViewBag.VatZW, "Value", "Text"), "PTU G", htmlAttributes: new { @class = "form-control" })
+                                                                    @*@Html.DropDownList("VAT_G_old", new List<SelectListItem>
+                                                                    {
+                                                                    new SelectListItem{ Text="zw" },
+                                                                    }, "PTU G", htmlAttributes: new { @class = "form-control" })*@
+                                                                    @Html.ValidationMessageFor(model => model.VAT_G_old)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <h5>Stawki VAT po 2011</h5>
+                                                <div class="ibox-tools">
+                                                    <a class="collapse-link">
+                                                        <i class="fa fa-chevron-up"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="ibox-content" style="">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_A_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU A" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_A_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_A_new", new SelectList(ViewBag.VatNew, "Value", "Text"), "PTU A", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_A_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_A_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU A" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_A_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_B_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU B" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_B_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_B_new", new SelectList(ViewBag.VatNew, "Value", "Text"), "PTU B", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_B_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_B_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU B" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_B_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_C_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU C" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_C_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_C_new", new SelectList(ViewBag.VatNew, "Value", "Text"), "PTU C", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_C_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_C_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU C" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_C_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_D_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU D" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_D_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_D_new", new SelectList(ViewBag.VatNew, "Value", "Text"), "PTU D", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_D_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_D_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU D" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_D_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_E_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU E" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_E_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_E_new", new SelectList(ViewBag.VatNew, "Value", "Text"), "PTU E", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_E_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_E_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU E" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_E_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_F_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU F" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_F_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_F_new", new SelectList(ViewBag.VatNew, "Value", "Text"), "PTU F", htmlAttributes: new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.VAT_F_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.PTU_F_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kwota PTU F" } })
+                                                                    @Html.ValidationMessageFor(model => model.PTU_F_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.EditorFor(model => model.S_PTU_G_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sprzedaż opod. PTU G" } })
+                                                                    @Html.ValidationMessageFor(model => model.S_PTU_G_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    @Html.DropDownList("VAT_G_new", new SelectList(ViewBag.VatZW, "Value", "Text"), "PTU G", htmlAttributes: new { @class = "form-control" })
+                                                                    @*@Html.DropDownList("VAT_G_new", new List<SelectListItem>
+                                                                    {
+                                                                    new SelectListItem{ Text="zw" },
+                                                                    }, "PTU G", htmlAttributes: new { @class = "form-control" })*@
+                                                                    @Html.ValidationMessageFor(model => model.VAT_G_new)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Raport podsumowanie</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content" style="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.TotalAmount, new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-5">
+                                                        @Html.EditorFor(model => model.TotalAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.TotalAmount, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.TotalAmountPTU, new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-5">
+                                                        @Html.EditorFor(model => model.TotalAmountPTU, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.TotalAmountPTU, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.MemoryResetCount, new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-5">
+                                                        @Html.EditorFor(model => model.MemoryResetCount, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.MemoryResetCount, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.City, new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-5">
+                                                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.NumberOfFiscalRecipt, new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-5">
+                                                        @Html.EditorFor(model => model.NumberOfFiscalRecipt, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.NumberOfFiscalRecipt, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.NumberOfReciptCanceled, new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-5">
+                                                        @Html.EditorFor(model => model.NumberOfReciptCanceled, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.NumberOfReciptCanceled, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.ValueOfCanceledRecipt, new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-5">
+                                                        @Html.EditorFor(model => model.ValueOfCanceledRecipt, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.ValueOfCanceledRecipt, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.DateOfCompletion, new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-5">
+                                                        @*@Html.EditorFor(model => model.DateOfCompletion, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                        @Html.TextBoxFor(m => m.DateOfCompletion, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.DateOfCompletion, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Pozostałe</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content" style="">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Addnotations, new { @class = "control-label col-md-2" })
+                                            <div class="col-md-9">
+                                                @Html.EditorFor(model => model.Addnotations, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Addnotations, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.DatesOfInterimReviews, new { @class = "control-label col-md-2" })
+                                            <div class="col-md-9">
+                                                @Html.EditorFor(model => model.DatesOfInterimReviews, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.DatesOfInterimReviews, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" align="right">
+                                <div class="col-md-offset-10 col-md-2">
+                                    <input type="submit" value="Zapisz" class="btn btn-primary" />
+                                    @Html.ActionLink("Anuluj", "Index", null, new { @class = "btn btn-white" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+@section Scripts {
+    @Scripts.Render("~/plugins/dateTimePicker")
+    @Scripts.Render("~/plugins/mask")
+
+
+    <script type="text/javascript">
+        jQuery.datetimepicker.setLocale('pl');
+
+        $('#DateOfFiscalization').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            timepicker: false,
+            format: 'Y-m-d'
+        });
+
+        $('#FromReportDate').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            timepicker: false,
+            format: 'Y-m-d'
+        });
+
+        $('#ToReportDate').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            timepicker: false,
+            format: 'Y-m-d'
+        });
+
+        $('#DateOfCompletion').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            timepicker: false,
+            format: 'Y-m-d'
+        });
+    </script>
+}

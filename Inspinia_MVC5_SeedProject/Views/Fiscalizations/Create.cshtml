@@ -1,0 +1,226 @@
+﻿@model Inspinia_MVC5_SeedProject.ViewModels.Fiscalizations.FiscalizationViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@Styles.Render("~/plugins/dataPickerStyles")*@
+@Styles.Render("~/plugins/dateTimePickerStyles")
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Fiskalizacja</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Strona główna", "Index")
+            </li>
+            <li class="active">
+                <strong>Utwórz</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            @Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Nowe zlecenie</h5>
+                </div>
+                <div class="ibox-content">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationMessageFor(model => model.Devices, "", new { @class = "text-danger" })
+
+                            <fieldset>
+                                <div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-offset-1 col-md-5">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.FiscalizationDate, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-6">
+                                                            @Html.EditorFor(model => model.FiscalizationDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.FiscalizationDate, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.RevievDate, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-6">
+                                                            @Html.EditorFor(model => model.RevievDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.RevievDate, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.UseOfTheDeviceDate, htmlAttributes: new { @class = "control-label col-md-3", Title = "Data obowiązku stosowania urządzenia" })
+                                                        <div class="col-md-6">
+                                                            @Html.EditorFor(model => model.UseOfTheDeviceDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.UseOfTheDeviceDate, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-9">
+                                                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.CustomerId, null, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-9">
+                                                            @Html.DropDownList("CustomerId", null, "Wybierz podatnika", htmlAttributes: new { @class = "form-control", id = "CustomerDropDown" })
+                                                            @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.TaxOfficeId, null, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-9">
+                                                            @Html.DropDownList("TaxOfficeId", null, "Wybierz Urząd Skarbowy", htmlAttributes: new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.TaxOfficeId, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Servisman, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-9">
+                                                            @Html.EditorFor(model => model.Servisman, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Servisman, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @{
+                                        string panel_color = "panel panel-primary";
+                                        if (ViewBag.DevicesCountError == "noneSelected")
+                                        {
+                                            panel_color = "panel panel-danger";
+                                        }
+                                    }
+                                    <div class="@panel_color">
+                                        <div class="panel-heading">
+                                            Wybierz urządzenia do fiskalizacji
+                                        </div>
+                                        <div class="panel-body">
+                                            <div id="DevicesPartialView">
+                                                @Html.Partial("~/Views/Fiscalizations/EditorTemplates/SelectDeviceToFiscalizationViewModel.cshtml", Model)
+                                            </div>
+                                        </div>
+                                    </div>
+                                      
+                                    <div class="form-group" align="right">
+                                        <div class="col-md-offset-10 col-md-2">
+                                            <input type="submit" value="Zapisz" class="btn btn-primary" />
+                                            @Html.ActionLink("Anuluj", "Index", null, new { @class = "btn btn-white" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @*@Scripts.Render("~/plugins/dataPicker")*@
+    @Scripts.Render("~/plugins/dateTimePicker")
+
+
+@*<script src="~/Scripts/plugins/datapicker/bootstrap-datepicker.js"></script>*@
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#CustomerDropDown").on("change", function () {
+                $.ajax(
+                    {
+                        url: '/Fiscalizations/SetDevicesAddressesByCustomer?customerId=' + $(this).val(),
+                        type: 'GET',
+                        data: { fiscalizationId: '@(Model.FiscalizationId)' },
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            $("#DevicesPartialView").html(data);
+                        }
+                    });
+            });
+
+            $('#signupform').on('submit', function (e) {
+                var form = this;
+                // Encode a set of form elements from all pages as an array of names and values
+                var params = table.$('input,select,textarea').serializeArray();
+
+                // Iterate over all form elements
+                $.each(params, function () {
+                    // If element doesn't exist in DOM
+                    if (!$.contains(document, form[this.name])) {
+                        // Create a hidden element
+                        $(form).append(
+                           $('<input>')
+                              .attr('type', 'hidden')
+                              .attr('name', this.name)
+                              .val(this.value)
+                        );
+                    }
+                });
+            });
+        });
+
+        jQuery.datetimepicker.setLocale('pl');
+        $('#FiscalizationDate').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            timepicker:false,
+            format: 'Y-m-d',
+        });
+
+        $('#RevievDate').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            timepicker: false,
+            format: 'Y-m-d',
+        });
+
+        $('#UseOfTheDeviceDate').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            timepicker: false,
+            format: 'Y-m-d',
+            //format: 'yyyy-mm-dd',
+        });
+
+    </script>
+}

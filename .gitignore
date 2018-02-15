@@ -286,3 +286,15 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/Inspinia_MVC5_SeedProject/Content
+/Inspinia_MVC5_SeedProject/CodeTemplates
+/Inspinia_MVC5_SeedProject/fonts
+/Inspinia_MVC5_SeedProject/Migrations
+/Inspinia_MVC5_SeedProject/Scripts
+/Inspinia_MVC5_SeedProject.sln
+/Inspinia_MVC5_SeedProject/Web.config
+/Inspinia_MVC5_SeedProject/Inspinia_MVC5_SeedProject.csproj
+/Inspinia_MVC5_SeedProject/Global.asax
+/Inspinia_MVC5_SeedProject/favicon.ico
+/Inspinia_MVC5_SeedProject/Views/Web.config
+/Inspinia_MVC5_SeedProject/packages.config

@@ -1,0 +1,181 @@
+﻿@model Inspinia_MVC5_SeedProject.ViewModels.Home.HomeViewModel
+
+
+@{
+    ViewBag.Title = "Main";
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content text-center p-md">
+
+                    <h2>
+                        <span class="text-navy">SERVICE MANAGER - ewidencja urządzeń fiskalnych</span>
+                        <br>jest aplikacją webową wspierającą pracę serwisów urządzeń fiskalnych.
+                    </h2>
+
+                    <p>
+                        Ze względu na specyfikę pracy oraz obowiązki ciążące na takich serwisach,<br> niniejsze narzędzie wydaje się być nieodzownym elementem w pracy serwisów oraz serwisantów.
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Przeglądy
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <table class="table table-striped table-bordered table-hover dt-fiscalizations">
+                                    <thead>
+                                        <tr>
+                                            <th>Lp</th>
+                                            <th>
+                                                Miasto
+                                            </th>
+                                            <th>
+                                                Data przeglądu
+                                            </th>
+                                            <th>
+                                                Następny przegląd
+                                            </th>
+                                            <th>
+                                                Serwisant
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ var i = 0;}
+                                        @foreach (var item in Model.interimReviews)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @(i += 1)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.City)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DateOfReview)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.NextReview)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ServiceMan)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Uprawnienia
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Interwencje serwisowe
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <table class="table table-striped table-bordered table-hover dt-fiscalizations">
+                                    <thead>
+                                        <tr>
+                                            <th>Lp</th>
+                                            <th>
+                                                Miasto
+                                            </th>
+                                            <th>
+                                                Data przeglądu
+                                            </th>
+                                            <th>
+                                                Następny przegląd
+                                            </th>
+                                            <th>
+                                                Serwisant
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ i = 0;}
+                                        @foreach (var item in Model.interimReviews)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @(i += 1)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.City)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DateOfReview)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.NextReview)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ServiceMan)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    Serwisanci
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+</div>

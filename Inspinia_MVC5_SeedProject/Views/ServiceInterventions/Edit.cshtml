@@ -1,0 +1,310 @@
+﻿@model Inspinia_MVC5_SeedProject.Models.ServiceIntervention
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@Styles.Render("~/plugins/dataPickerStyles")*@
+@Styles.Render("~/plugins/dateTimePickerStyles")
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Interwencja serwisowa</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Strona główna", "Index")
+            </li>
+            <li class="active">
+                <strong>Edycja</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+			@Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary"})
+        </div>
+    </div>
+</div>
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Edytuj Interwencje serwisową</h5>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true)
+                                @Html.HiddenFor(model => model.ModuleId)
+                                @Html.HiddenFor(model => model.ServiceInterventionId)
+
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Naprawa urządzenia
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InterventionStart, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.InterventionStart, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.InterventionStart, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InterventionEnd, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-3">
+                                                @Html.EditorFor(model => model.InterventionEnd, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.InterventionEnd, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Stan liczników
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.ReceiptsFiscalCountStart, new { @class = "control-label col-sm-3" })
+                                                <div class="col-sm-2">
+                                                    @Html.TextBoxFor(model => model.ReceiptsFiscalCountStart, new { @class = "form-control", @placeholder = "PRZED" })
+                                                    @Html.ValidationMessageFor(model => model.ReceiptsFiscalCountStart, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="col-sm-2">
+                                                    @Html.TextBoxFor(model => model.ReceiptsFiscalCountEnd, new { @class = "form-control", @placeholder = "PO" })
+                                                    @Html.ValidationMessageFor(model => model.ReceiptsFiscalCountEnd, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.FiscalDailyReportStart, new { @class = "control-label col-sm-3" })
+                                                <div class="col-sm-2">
+                                                    @Html.TextBoxFor(model => model.FiscalDailyReportStart, new { @class = "form-control", @placeholder = "PRZED" })
+                                                    @Html.ValidationMessageFor(model => model.FiscalDailyReportStart, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="col-sm-2">
+                                                    @Html.TextBoxFor(model => model.FiscalDailyReportEnd, new { @class = "form-control", @placeholder = "PO" })
+                                                    @Html.ValidationMessageFor(model => model.FiscalDailyReportEnd, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.ResettingRamCountStart, new { @class = "control-label col-md-3" })
+                                                <div class="col-md-2">
+                                                    @Html.TextBoxFor(model => model.ResettingRamCountStart, new { @class = "form-control", @placeholder = "PRZED" })
+                                                    @Html.ValidationMessageFor(model => model.ResettingRamCountStart, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    @Html.TextBoxFor(model => model.ResettingRamCountEnd, new { @class = "form-control", @placeholder = "PO" })
+                                                    @Html.ValidationMessageFor(model => model.ResettingRamCountEnd, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.ReceiptsCountAllStart, new { @class = "control-label col-md-3" })
+                                                <div class="col-md-2">
+                                                    @Html.TextBoxFor(model => model.ReceiptsCountAllStart, new { @class = "form-control", @placeholder = "PRZED" })
+                                                    @Html.ValidationMessageFor(model => model.ReceiptsCountAllStart, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    @Html.TextBoxFor(model => model.ReceiptsCountAllEnd, new { @class = "form-control", @placeholder = "PO" })
+                                                    @Html.ValidationMessageFor(model => model.ReceiptsCountAllEnd, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Opis zgłoszenia
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.ProblemsDescrtiption, new { @class = "control-label col-md-3" })
+                                                <div class="col-md-8">
+                                                    @Html.TextAreaFor(model => model.ProblemsDescrtiption, 4, 1, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ProblemsDescrtiption, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.SealCount, new { @class = "control-label col-md-3" })
+                                                <div class="col-md-2">
+                                                    @Html.TextBoxFor(model => model.SealCount, new { @class = "form-control", @placeholder = "WPISZ ILOŚĆ" })
+                                                    @Html.ValidationMessageFor(model => model.SealCount, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        @Html.DropDownList("SealCondition", new List<SelectListItem>
+                                                    {
+                                                    new SelectListItem{ Text="Naruszona", Value = "true" },
+                                                    new SelectListItem{ Text="Nienaruszona", Value = "false" }
+                                                    }, "Wybierz", htmlAttributes: new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.SealCondition, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Wykonane czynności
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.RepairedComponents, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-8">
+                                                @Html.TextAreaFor(model => model.RepairedComponents, 4, 1, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.RepairedComponents, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FiscalDocPrinted, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-8">
+                                                @Html.TextAreaFor(model => model.FiscalDocPrinted, 4, 1, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.FiscalDocPrinted, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Podsumowanie
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.WhyCantRepairAtCustomer, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-8">
+                                                @Html.TextAreaFor(model => model.WhyCantRepairAtCustomer, 4, 1, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.WhyCantRepairAtCustomer, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.PlaceOfRepair, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-8">
+                                                @Html.TextAreaFor(model => model.PlaceOfRepair, 4, 1, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.PlaceOfRepair, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ConfirmationOfReceipt, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-2">
+                                                @Html.EditorFor(model => model.ConfirmationOfReceipt, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.ConfirmationOfReceipt, "", new { @class = "text-danger" })
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                @Html.TextBoxFor(model => model.ServiceBookPageNumber, new { @class = "form-control", @placeholder = "Nr strony z książki serwisowej" })
+                                                @Html.ValidationMessageFor(model => model.ServiceBookPageNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        @*<div class="form-group">
+                                            @Html.LabelFor(model => model.ConfirmationOfReceipt, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.ConfirmationOfReceipt, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.ConfirmationOfReceipt, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ServiceBookPageNumber, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-8">
+                                                @Html.TextAreaFor(model => model.ServiceBookPageNumber, 4, 1, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ServiceBookPageNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-12">
+                                            <input type="submit" value="Zapisz" class="btn btn-primary" />
+                                            @Html.ActionLink("Anuluj", "Index", null, new { @class = "btn btn-white" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="title-action">
+                                            @Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+@section Scripts {
+    @*@Scripts.Render("~/plugins/dataPicker")*@
+    @Scripts.Render("~/plugins/dateTimePicker")
+
+
+    @*<script src="~/Scripts/plugins/datapicker/bootstrap-datepicker.js"></script>*@
+
+    <script type="text/javascript">
+        jQuery.datetimepicker.setLocale('pl');
+
+        $('#InterventionStart').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'Y-m-d H:i',
+        });
+
+        $('#InterventionEnd').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'Y-m-d H:i',
+        });
+
+        $('#ConfirmationOfReceipt').datetimepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'Y-m-d H:i',
+        });
+
+    </script>
+}

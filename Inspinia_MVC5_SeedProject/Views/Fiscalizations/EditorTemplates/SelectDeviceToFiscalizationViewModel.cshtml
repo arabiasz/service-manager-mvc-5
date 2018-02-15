@@ -1,0 +1,106 @@
+﻿
+@model Inspinia_MVC5_SeedProject.ViewModels.Fiscalizations.FiscalizationViewModel
+                    
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered dt-devicesToFiscalization">
+        <thead>
+            <tr>
+                <th>
+                    Zaznacz
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Nr fabryczny
+                </th>
+                <th>
+                    Nr unikatowy
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Msc. instalacji
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Devices.Count; i++)
+            {
+                <tr>
+                    @Html.HiddenFor(model => model.Devices[i].DeviceId)
+                    @Html.HiddenFor(model => model.Devices[i].ModuleId)
+                    <td style="text-align:center">
+                        @Html.CheckBoxFor(model => model.Devices[i].Selected)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Devices[i].DeviceName)
+                        @Html.HiddenFor(model => model.Devices[i].DeviceName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Devices[i].SerialNumber)
+                        @Html.HiddenFor(model => model.Devices[i].SerialNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Devices[i].UniqueNumber)
+                        @Html.HiddenFor(model => model.Devices[i].UniqueNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Devices[i].Status, new { cols = "40%", style = "color:red;" })
+                        @Html.HiddenFor(model => model.Devices[i].Status)
+                    </td>
+                    <td width="300px">
+                        @Html.DropDownListFor(model => model.Devices[i].AddressId, new SelectList(Model.Devices[i].Addresses, "AddressId", "Name", Model.Devices[i].AddressId), "Wybierz", htmlAttributes: new { @class = "form-control", style = "width: 300px;" })
+                        @Html.ValidationMessageFor(model => model.Devices[i].Selected, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Devices[i].AddressId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptFile("~/plugins/dataTables");
+    Html.AddScriptBlock(
+        @<script type="text/javascript">
+            $(document).ready(function () {
+                $('.dt-devicesToFiscalization').DataTable({
+                    pageLength: 10,
+                    autoWidth: true,
+                    stateSave: true,
+                    responsive: true,
+                    dom: '<"html5buttons">lTfgitp',
+                    buttons: [
+                        { extend: 'copy' },
+                        { extend: 'csv' },
+                        { extend: 'excel', title: 'Lista producentów' },
+                        { extend: 'pdf', title: 'Lista producentów' },
+                        {
+                            extend: 'print',
+                            customize: function (win) {
+                                $(win.document.body).addClass('white-bg');
+                                $(win.document.body).css('font-size', '10px');
+
+                                $(win.document.body).find('table')
+                                        .addClass('compact')
+                                        .css('font-size', 'inherit');
+                            }
+                        },
+                        { extend: 'colvis' }
+                    ],
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Polish.json",
+                        buttons: {
+                            colvis: 'Dostosuj kolumny'
+                        },
+                    }
+                });
+
+            });
+        </script>
+    , true);
+}

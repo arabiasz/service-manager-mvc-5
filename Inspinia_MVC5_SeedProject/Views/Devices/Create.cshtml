@@ -1,0 +1,105 @@
+﻿@model Inspinia_MVC5_SeedProject.Models.Module
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Urządzenie</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Strona główna", "Index")
+            </li>
+            <li class="active">
+                <strong>Utwórz</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+			@Html.ActionLink("Powrót", "Index", null, new { @class = "btn btn-primary"})
+        </div>
+    </div>
+</div>
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Nowe urządzenie</h5>
+                </div>
+                <div class="ibox-content">
+
+				@using (Html.BeginForm()) 
+                {
+                    @Html.AntiForgeryToken()
+    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Device.DevicesFolderId, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Device.DevicesFolderId, (IEnumerable<SelectListItem>)ViewBag.DevicesList, "Wybierz urządzenie", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Device.DevicesFolderId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Device.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Device.SerialNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Device.SerialNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UniqueNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.UniqueNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UniqueNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Device.RegistrationNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Device.RegistrationNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Device.RegistrationNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Device.ReviewInterval, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Device.ReviewInterval, htmlAttributes: new { @class = "form-control"@*, @Value = "24"*@ })
+                                @Html.ValidationMessageFor(model => model.Device.ReviewInterval, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Device.WarrantyInterval, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Device.WarrantyInterval, htmlAttributes: new { @class = "form-control"@*, @Value = "24"*@ })
+                                @Html.ValidationMessageFor(model => model.Device.WarrantyInterval, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Zapisz" class="btn btn-primary" />
+				                @Html.ActionLink("Anuluj", "Index", null, new { @class = "btn btn-white"})
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>

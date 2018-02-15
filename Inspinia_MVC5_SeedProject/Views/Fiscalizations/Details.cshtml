@@ -1,0 +1,123 @@
+﻿@model Inspinia_MVC5_SeedProject.Models.Fiscalization
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Details</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("List", "Index")
+            </li>
+            <li class="active">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Details Fiscalization</h5>
+                </div>
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaxOffice.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaxOffice.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FiscalizationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FiscalizationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RevievDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RevievDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UseOfTheDeviceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UseOfTheDeviceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servisman)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servisman)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Edit", "Edit", new { id = Model.FiscalizationId }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

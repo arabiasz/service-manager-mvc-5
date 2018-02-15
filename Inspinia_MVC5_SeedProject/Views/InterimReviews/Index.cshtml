@@ -1,0 +1,210 @@
+﻿@model IEnumerable<Inspinia_MVC5_SeedProject.ViewModels.InterimReviews.InterimReviewViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Przeglądy</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Strona główna</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Lista przeglądów</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover dt-interimReviews">
+                            <thead>
+                                <tr>
+                                    <th>Lp</th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DeviceName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SerialNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UniqueNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DateOfReview)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.NextReview)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Comments)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.City)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ServiceMan)
+                                    </th>
+                                    <th style="text-align: center" width="150px">
+                                        Opcje
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ var i = 0;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(i += 1)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DeviceName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SerialNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UniqueNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateOfReview)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NextReview)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Comments)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.City)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ServiceMan)
+                                        </td>
+                                        <td align="center">
+                                            @Html.ActionLink(" ", "Create", "InterimReviews", new { deviceId = item.DeviceId }, new { @class = "btn btn-warning btn-sm fa fa-wrench", title = "Nowy przegląd" })
+                                            @Html.ActionLink(" ", "GetReportPdf", "InterimReviews", new { id = item.InterimReviewId }, new { @class = "btn btn-danger btn-sm fa fa-file-pdf-o", title = "Drukuj protokół" })
+                                            @Html.ActionLink(" ", "Edit", new { id = item.InterimReviewId }, new { @class = "btn btn-success btn-sm fa fa-edit", title = "Edytuj" })                                            
+                                            <button class="btn btn-success btn-sm delete-group fa fa-trash" data-toggle="tooltip" title="Usuń" data-id="@item.InterimReviewId"></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+<div class="modal fade" id="editor-container" tabindex="-1"
+     role="dialog" aria-labelledby="editor-title">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content animated flipInY" id="editor-content-container"></div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
+
+    <script>
+        function CallbackFunc(data, status, xhr) {
+            $.validator.unobtrusive.parse($(data));
+            $('#editor-content-container').html(xhr.responseText);
+            $('#editor-container').modal('show');
+
+            if (data.success) {
+                window.location.href = data.url;
+            }
+        }
+
+		$(document).ready(function () {
+
+		    $('.delete-group').click(function (e) {
+		        e.preventDefault();
+		        var url = "/InterimReviews/Delete";
+		        var id = $(this).attr('data-id');
+		        $.get(url + '/' + id, function (data) {
+		            $('#editor-content-container').html(data);
+		            $('#editor-container').modal('show');
+		        });
+		    });
+
+			oTable = $('.dt-interimReviews').DataTable({
+                pageLength: 25,
+                autoWidth: true,
+                stateSave: true,
+                responsive: true,
+				dom: '<"html5buttons"B>lTfgitp',
+				aoColumnDefs: [{ orderable: false, aTargets: [9] }],
+				buttons: [
+					{ extend: 'copy' },
+					{ extend: 'csv' },
+                    { extend: 'excel', title: 'Lista przeglądów', orientation: 'landscape' },
+                    { extend: 'pdf', title: 'Lista przeglądów', orientation: 'landscape' },
+					{
+						extend: 'print',
+						customize: function (win) {
+							$(win.document.body).addClass('white-bg');
+							$(win.document.body).css('font-size', '10px');
+
+							$(win.document.body).find('table')
+									.addClass('compact')
+									.css('font-size', 'inherit');
+						}
+					},
+					{ extend: 'colvis' }
+				],
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Polish.json",
+					buttons: {
+						colvis: 'Dostosuj kolumny'
+					},
+				}
+			});
+
+			oTable.rows().every(function (rowIdx, tableLoop, rowLoop) {
+			    var cell = oTable.cell({ row: rowIdx, column: 3 }).node();
+
+			    //----------------------------------------------------
+			    var cellData = oTable.cell({ row: rowIdx, column: 3 }).data();
+			    //    console.log(cellData);
+			    var d = new Date();
+			    //    var day = d.getFullYear();//d.getDate();
+			    //    console.log(d);
+
+			    var date1 = new Date(cellData);
+			    date1.setHours(0, 0, 0, 0);
+			    var date2 = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+			    date2.setHours(0, 0, 0, 0);
+			    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+			    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+			    if ((date1 > date2) && (diffDays < 20))
+			        $(cell).addClass('warning');
+			    else
+			        if ((date1 <= date2))
+			            $(cell).addClass('danger');
+			});
+		});
+
+    </script>
+}
+
+
+
+

@@ -1,0 +1,219 @@
+﻿@model Inspinia_MVC5_SeedProject.Models.ServiceIntervention
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Details</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("List", "Index")
+            </li>
+            <li class="active">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Details ServiceIntervention</h5>
+                </div>
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Module.UniqueNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Module.UniqueNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterventionStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterventionStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterventionEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterventionEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiptsFiscalCountStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceiptsFiscalCountStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiptsFiscalCountEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceiptsFiscalCountEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FiscalDailyReportStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FiscalDailyReportStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FiscalDailyReportEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FiscalDailyReportEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResettingRamCountStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResettingRamCountStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResettingRamCountEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResettingRamCountEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiptsCountAllStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceiptsCountAllStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiptsCountAllEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceiptsCountAllEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemsDescrtiption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemsDescrtiption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SealCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SealCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SealCondition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SealCondition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairedComponents)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairedComponents)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FiscalDocPrinted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FiscalDocPrinted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhyCantRepairAtCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhyCantRepairAtCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaceOfRepair)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaceOfRepair)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmationOfReceipt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmationOfReceipt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceBookPageNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceBookPageNumber)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Edit", "Edit", new { id = Model.ServiceInterventionId }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
